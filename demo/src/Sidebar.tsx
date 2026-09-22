@@ -68,49 +68,57 @@ export default function Sidebar(props: SidebarProps) {
 
       <section className="section">
         <h2 className="section-label">Options (live)</h2>
-        <label className="field">
-          Theme
-          <select
-            value={props.theme}
-            onChange={(event) =>
-              props.onThemeChange(event.target.value as 'light' | 'dark')
-            }
-          >
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </label>
-        <label className="field">
-          Locale
-          <select
-            value={props.locale}
-            onChange={(event) =>
-              props.onLocaleChange(event.target.value as UnlayerLocale)
-            }
-          >
-            {LOCALES.map((locale) => (
-              <option key={locale.value} value={locale.value}>
-                {locale.label}
-              </option>
+
+        <div className="segmented-group">
+          <span className="segmented-label">Theme</span>
+          <div className="segmented-control" role="tablist" aria-label="Theme">
+            {(['light', 'dark'] as const).map((theme) => (
+              <button
+                key={theme}
+                type="button"
+                className={props.theme === theme ? 'is-active' : ''}
+                onClick={() => props.onThemeChange(theme)}
+              >
+                {theme === 'light' ? 'Light' : 'Dark'}
+              </button>
             ))}
-          </select>
-        </label>
+          </div>
+        </div>
+
+        <div className="segmented-group">
+          <span className="segmented-label">Locale</span>
+          <div className="segmented-control wide" role="tablist" aria-label="Locale">
+            {LOCALES.map((locale) => (
+              <button
+                key={locale.value}
+                type="button"
+                className={props.locale === locale.value ? 'is-active' : ''}
+                onClick={() => props.onLocaleChange(locale.value)}
+              >
+                {locale.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="section">
         <h2 className="section-label">Dock (remounts editor)</h2>
-        <label className="field">
-          Toolbar position
-          <select
-            value={props.dock}
-            onChange={(event) =>
-              props.onDockChange(event.target.value as 'left' | 'right')
-            }
-          >
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-          </select>
-        </label>
+        <div className="segmented-group">
+          <span className="segmented-label">Toolbar position</span>
+          <div className="segmented-control" role="tablist" aria-label="Toolbar position">
+            {(['left', 'right'] as const).map((dock) => (
+              <button
+                key={dock}
+                type="button"
+                className={props.dock === dock ? 'is-active' : ''}
+                onClick={() => props.onDockChange(dock)}
+              >
+                {dock === 'left' ? 'Left' : 'Right'}
+              </button>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="section">
