@@ -51,9 +51,7 @@ export default function Sidebar(props: SidebarProps) {
       <section className="section">
         <h2 className="section-label">Actions</h2>
         <button onClick={props.onChangeImage}>Change image</button>
-        <button onClick={() => fileInputRef.current?.click()}>
-          Upload image…
-        </button>
+        <button onClick={() => fileInputRef.current?.click()}>Upload image…</button>
         <input
           ref={fileInputRef}
           type="file"
@@ -61,8 +59,6 @@ export default function Sidebar(props: SidebarProps) {
           hidden
           onChange={(event) => {
             const file = event.target.files?.[0];
-            // Clear before the callback so re-selecting the same file always
-            // fires onChange, even if the handler throws.
             event.target.value = '';
             if (file) props.onUploadImage(file);
           }}
