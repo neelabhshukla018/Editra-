@@ -66,7 +66,7 @@ export default function Sidebar(props: SidebarProps) {
         <button onClick={props.onSnapshot}>Snapshot</button>
       </section>
 
-      <section className="section">
+      
         <h2 className="section-label">Options (live)</h2>
 
         <div className="segmented-group">
@@ -85,22 +85,7 @@ export default function Sidebar(props: SidebarProps) {
           </div>
         </div>
 
-        <div className="segmented-group">
-          <span className="segmented-label">Locale</span>
-          <div className="segmented-control wide" role="tablist" aria-label="Locale">
-            {LOCALES.map((locale) => (
-              <button
-                key={locale.value}
-                type="button"
-                className={props.locale === locale.value ? 'is-active' : ''}
-                onClick={() => props.onLocaleChange(locale.value)}
-              >
-                {locale.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+       
 
       <section className="section">
         <h2 className="section-label">Dock (remounts editor)</h2>

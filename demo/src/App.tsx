@@ -160,7 +160,7 @@ export default function App() {
             image={image}
             options={{
               theme,
-              locale,
+          
               features: { imageEditor: { dock, tools } },
             }}
             onLoad={() => setStatus('Editor ready')}
