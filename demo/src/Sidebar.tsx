@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 
 import type { UnlayerLocale } from '@unlayer/types';
 
+import type { FilterPreset } from './App';
+
 export const TOOL_NAMES = [
   'crop',
   'resize',
@@ -15,12 +17,13 @@ export const TOOL_NAMES = [
 
 export type ToolName = (typeof TOOL_NAMES)[number];
 
-const LOCALES: { value: UnlayerLocale; label: string }[] = [
-  { value: 'en', label: 'English' },
-  { value: 'es', label: 'Español' },
-  { value: 'fr', label: 'Français' },
-  { value: 'de', label: 'Deutsch' },
-  { value: 'ja', label: '日本語' },
+const FILTER_PRESETS: { value: FilterPreset; label: string }[] = [
+  { value: 'none', label: 'None' },
+  { value: 'bright', label: 'Bright' },
+  { value: 'warm', label: 'Warm' },
+  { value: 'noir', label: 'Noir' },
+  { value: 'vintage', label: 'Vintage' },
+  { value: 'dramatic', label: 'Dramatic' },
 ];
 
 interface SidebarProps {
@@ -28,6 +31,8 @@ interface SidebarProps {
   onThemeChange(theme: 'light' | 'dark'): void;
   locale: UnlayerLocale;
   onLocaleChange(locale: UnlayerLocale): void;
+  filterPreset: FilterPreset;
+  onFilterPresetChange(filterPreset: FilterPreset): void;
   dock: 'left' | 'right';
   onDockChange(dock: 'left' | 'right'): void;
   tools: Record<ToolName, boolean>;
@@ -66,7 +71,7 @@ export default function Sidebar(props: SidebarProps) {
         <button onClick={props.onSnapshot}>Snapshot</button>
       </section>
 
-      
+      <section className="section">
         <h2 className="section-label">Options (live)</h2>
 
         <div className="segmented-group">
@@ -84,14 +89,37 @@ export default function Sidebar(props: SidebarProps) {
             ))}
           </div>
         </div>
+      </section>
 
-       
+      <section className="section">
+        <h2 className="section-label">Filter presets</h2>
+        <div className="filter-grid">
+          {FILTER_PRESETS.map((preset) => (
+            <button
+              key={preset.value}
+              type="button"
+              className={
+                props.filterPreset === preset.value
+                  ? 'filter-chip active'
+                  : 'filter-chip'
+              }
+              onClick={() => props.onFilterPresetChange(preset.value)}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
+      </section>
 
       <section className="section">
         <h2 className="section-label">Dock (remounts editor)</h2>
         <div className="segmented-group">
           <span className="segmented-label">Toolbar position</span>
-          <div className="segmented-control" role="tablist" aria-label="Toolbar position">
+          <div
+            className="segmented-control"
+            role="tablist"
+            aria-label="Toolbar position"
+          >
             {(['left', 'right'] as const).map((dock) => (
               <button
                 key={dock}

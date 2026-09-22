@@ -244,6 +244,31 @@ select {
   opacity: 1;
 }
 
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.filter-chip {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--chrome-fg);
+  border-radius: 10px;
+  padding: 9px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip.active {
+  background: linear-gradient(180deg, rgba(216, 149, 61, 0.4), rgba(216, 149, 61, 0.2));
+  border-color: rgba(245, 204, 127, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
 .tool-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

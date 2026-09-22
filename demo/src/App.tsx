@@ -26,12 +26,24 @@ const allToolsEnabled = () =>
     boolean
   >;
 
+const FILTER_PRESETS = {
+  none: 'none',
+  bright: 'brightness(1.2) saturate(1.2)',
+  warm: 'sepia(0.35) saturate(1.2) contrast(1.08)',
+  noir: 'grayscale(1) contrast(1.15)',
+  vintage: 'sepia(0.55) contrast(1.08) brightness(1.05)',
+  dramatic: 'contrast(1.35) saturate(1.4) brightness(0.95)',
+} as const;
+
+export type FilterPreset = keyof typeof FILTER_PRESETS;
+
 export default function App() {
   const editorRef = useRef<ImageEditorRef>(null);
 
   const [image, setImage] = useState(SAMPLE_IMAGES[0]);
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [locale, setLocale] = useState<UnlayerLocale>('en');
+  const [filterPreset, setFilterPreset] = useState<FilterPreset>('none');
   const [dock, setDock] = useState<'left' | 'right'>('right');
   const [tools, setTools] =
     useState<Record<ToolName, boolean>>(allToolsEnabled);
@@ -143,6 +155,8 @@ export default function App() {
             onThemeChange={setTheme}
             locale={locale}
             onLocaleChange={setLocale}
+            filterPreset={filterPreset}
+            onFilterPresetChange={setFilterPreset}
             dock={dock}
             onDockChange={changeDock}
             tools={tools}
@@ -158,9 +172,10 @@ export default function App() {
           <ImageEditor
             ref={editorRef}
             image={image}
+            style={{ filter: FILTER_PRESETS[filterPreset] }}
             options={{
               theme,
-          
+              locale,
               features: { imageEditor: { dock, tools } },
             }}
             onLoad={() => setStatus('Editor ready')}
