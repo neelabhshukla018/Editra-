@@ -1,8 +1,5 @@
 # EDITRA - An Image Editor tool
 
-[L3] [![npm version](https://img.shields.io/npm/v/@unlayer/react-image-editor.svg)](https://www.npmjs.com/package/@unlayer/react-image-editor)
-[L4] [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[L5] [![CI](https://github.com/unlayer/react-image-editor/actions/workflows/ci.yml/badge.svg)](https://github.com/unlayer/react-image-editor/actions/workflows/ci.yml)
 
 The Image Editor as a React.js wrapper component — crop, resize, draw, text, shapes, stickers, frames, filters, and an optional AI Assistant.
 
