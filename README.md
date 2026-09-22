@@ -1,4 +1,4 @@
-# React Image Editor
+# EDITRA - An Image Editor tool
 
 [L3] [![npm version](https://img.shields.io/npm/v/@unlayer/react-image-editor.svg)](https://www.npmjs.com/package/@unlayer/react-image-editor)
 [L4] [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
