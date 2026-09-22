@@ -123,7 +123,7 @@ export default function App() {
         >
           ☰
         </button>
-        <h1>React Image Editor</h1>
+        <h1>𝔼𝕕𝕚𝕥𝕣𝕒</h1>
         <span className="status">{status}</span>
       </header>
 

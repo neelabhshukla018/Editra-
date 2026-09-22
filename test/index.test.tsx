@@ -386,6 +386,18 @@ it('lets style override the container default and wrapperStyle reach the wrapper
   expect(wrapper.style.minHeight).toBe('0px');
 });
 
+it('keeps the editor responsive inside narrow flex containers', async () => {
+  render(<ImageEditor editorId="responsive" image="img-a" />);
+  await flush();
+
+  const container = document.querySelector('#responsive') as HTMLElement;
+  const wrapper = container.parentElement as HTMLElement;
+
+  expect(wrapper.style.width).toBe('100%');
+  expect(container.style.width).toBe('100%');
+  expect(container.style.minWidth).toBe('0px');
+});
+
 it('gives the editor region an accessible name, overridable via ariaLabel', async () => {
   const { rerender } = render(<ImageEditor editorId="a11y" image="img-a" />);
   await flush();

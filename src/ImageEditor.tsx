@@ -207,6 +207,7 @@ function ImageEditorInner(
       style={{
         flex: 1,
         display: 'flex',
+        width: '100%',
         minHeight: minHeight,
         ...wrapperStyle,
       }}
@@ -220,7 +221,7 @@ function ImageEditorInner(
         role="region"
         aria-label={ariaLabel}
         // flex first: a default the consumer's style can override.
-        style={{ flex: 1, ...style }}
+        style={{ flex: 1, width: '100%', minWidth: 0, ...style }}
       />
     </div>
   );
