@@ -30,7 +30,7 @@ export default function App() {
   const editorRef = useRef<ImageEditorRef>(null);
 
   const [image, setImage] = useState(SAMPLE_IMAGES[0]);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [locale, setLocale] = useState<UnlayerLocale>('en');
   const [dock, setDock] = useState<'left' | 'right'>('right');
   const [tools, setTools] =
