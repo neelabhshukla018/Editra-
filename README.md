@@ -9,11 +9,6 @@ The Image Editor as a React.js wrapper component — crop, resize, draw, text, s
 
 Try the live demo: [editraa.netlify.app](https://editraa.netlify.app/)
 
-## Installation
-
-```sh
-npm install @unlayer/react-image-editor
-```
 
 ## Usage
 
